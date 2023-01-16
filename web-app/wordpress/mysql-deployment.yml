@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      env: dev
+      app: database
+      type: deploy
+  template:
+    metadata:
+      labels:
+        env: dev
+        app: database
+        type: deploy
+    spec:
+      containers:
+        - name: mariadb-deploy
+          image: mariadb:10.7
+          env: 
+            - name: MYSQL_DATABASE
+              value: wordpress
+            - name: MYSQL_ROOT_PASSWORD
+              value: password
+          ports: 
+            - containerPort: 3306
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb-deploy-svc
+spec:
+  ports:
+    - port: 3306
+      protocol: TCP
+  selector:
+    env: dev
+    app: database
+    type: deploy

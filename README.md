@@ -80,3 +80,16 @@
     - 모든 노드를 바라보기 때문에 자동으로 살아 있는 노드에 접근
     - `NodePort`의 기능을 기본으로 포함
 - 보통의 웹 애플리케이션에서 80 혹은 443 포트를 사용하고 하나의 포트에서 여러 개의 서비스를 도메인이나 경로에 따라 다르게 연결하기 때문에, `NodePort`와 `LoadBalancer`를 제한적으로 사용
+
+## Day3
+### 웹 애플리케이션 배포
+- 실습 문제 풀이
+  - **web-app/wordpress**
+  
+    ![Screenshot 2023-01-16 at 12 09 25](https://user-images.githubusercontent.com/35317926/212590634-1f0355fe-6926-4a69-a00b-3c437a496999.png)
+    ![Screenshot 2023-01-16 at 12 10 08](https://user-images.githubusercontent.com/35317926/212590644-7326f5c6-9e6a-4cdf-af45-5cc447f7ace6.png)
+
+  - **web-app/vote**
+
+      ![Screenshot 2023-01-16 at 12 08 20](https://user-images.githubusercontent.com/35317926/212590622-dc1e866b-d899-422b-880f-1244b08abb56.png)
+      ![Screenshot 2023-01-16 at 12 08 45](https://user-images.githubusercontent.com/35317926/212590631-7bfde9b4-59eb-49b1-ba1f-863dbda9b190.png)

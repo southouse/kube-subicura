@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      env: dev
+      app: worker
+  template:
+    metadata:
+      labels:
+        env: dev
+        app: worker
+    spec:
+      containers:
+        - name: worker
+          image: ghcr.io/subicura/voting/worker:latest
+          env:
+            - name: REDIS_HOST
+              value: redis-svc
+            - name: REDIS_PORT
+              value: "6379"
+            - name: POSTGRES_HOST
+              value: postgres-svc
+            - name: POSTGRES_PORT
+              value: "5432"
