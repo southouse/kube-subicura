@@ -116,3 +116,18 @@
   - **Host Path**
     - 노드(호스트) 디렉토리를 컨테이너에 연결
     - 노드의 전체 상태를 모니터링하기 위해 사용
+
+## Day5
+### ConfigMap
+- 설정 파일과 환경 변수를 관리
+- 파일을 통째로 ConfigMap으로 만든 다음 볼륨에 마운트하여 사용할 수 있음
+- `env` 포맷을 그대로 사용하거나, `.yaml` 파일로 정의하여 사용 가능
+- 환경 변수로 사용하기 위해서는 `Pod`를 선언할 때 `spec.containers.env.valueFrom.configMapKeyRef`를 사용
+  - ConfigMap 객체의 이름과 안에 등록된 변수의 Key 값을 이용하여 참조 (ex. `config-map/alpine-env.yaml`)
+
+### Secret
+- `ConfigMap`과 차이점은 데이터가 `base64`로 인코딩되어 저장됨
+- 실제로 base64는 디코딩이 가능하기 때문에, 안전하지 않음.
+- `vault`와 같은 외부 솔루션을 이용하여 보안 강화 필요
+- 환경 변수로 사용하기 위해서는 `Pod`를 선언할 때 `spec.containers.env.valueFrom.secretKeyRef`를 사용
+  - Secret 객체의 이름과 안에 등록된 변수의 Key 값을 이용하여 참조 (ex. `secret/alpine-env.yaml`)
